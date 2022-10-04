@@ -1,0 +1,11 @@
+.ticketRow:hover {
+    background-color: #1592ee;
+    color: #f8fbfd;
+    cursor: pointer;
+}
+
+.listItem:hover {
+    background-color: #f4f5f7;
+    color: black;
+    cursor: pointer;
+}

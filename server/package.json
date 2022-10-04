@@ -1,0 +1,29 @@
+{
+  "name": "final-project-info6150_huskies",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Hi 👋, Welcome</h1>",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git@github-neu:neu-mis-info6150-spring-2022/final-project-info6150_huskies.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "config": "^3.3.7",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "express": "^4.17.3",
+    "express-validator": "^6.14.0",
+    "handlebars": "^4.7.7",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.2.10",
+    "nodemailer": "^6.7.3"
+  }
+}
