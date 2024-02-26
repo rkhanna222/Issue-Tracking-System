@@ -5,7 +5,7 @@ import Header from "components/Headers/Header.js";
 import AdminNavBar from "components/NavBars/AdminNavbar.js";
 import TicketGraph from "components/Charts/TicketGraph.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
-import Chart from "chart.js";
+import { Chart } from 'chart.js';
 import { Container, Col, Row } from "reactstrap";
 import { chartOptions, parseOptions } from "variables/charts.js";
 import TicketChartByPriority from "components/Charts/TicketChartByPriority.js";
