@@ -7,13 +7,13 @@ import TicketGraph from "components/Charts/TicketGraph.js";
 import AdminFooter from "components/Footers/AdminFooter.js";
 import { Chart } from 'chart.js';
 import { Container, Col, Row } from "reactstrap";
-import { chartOptions, parseOptions } from "variables/charts.js";
+import { chartOptions1, parseOptions1 } from "variables/charts.js";
 import TicketChartByPriority from "components/Charts/TicketChartByPriority.js";
 import TicketChartByStatus from "components/Charts/TicketChartByStatus.js";
 
 const Index = (props) => {
   if (window.Chart) {
-    parseOptions(Chart, chartOptions());
+    parseOptions1(Chart, chartOptions1());
   }
 
   return (

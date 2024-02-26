@@ -1,6 +1,6 @@
 {
   "name": "argon-dashboard-react",
-  "version": "1.2.4",
+  "version": "1.2.1",
   "description": "React version of Argon Dashboard by Creative Tim",
   "main": "index.js",
   "repository": {
@@ -47,21 +47,20 @@
     "bootstrap": "4.6.2",
     "chart.js": "2.9.4",
     "classnames": "2.3.2",
+    "libphonenumber-js": "^1.9.51",
     "moment": "2.29.4",
     "nouislider": "15.4.0",
-    "react": "18.2.0",
-    "react-chartjs-2": "4.3.1",
+    "react": "^17.0.2",
+    "react-chartjs-2": "2.11.2",
     "react-copy-to-clipboard": "5.1.0",
     "react-datetime": "3.2.0",
-    "react-dom": "18.2.0",
+    "react-dom": "^17.0.2",
+    "react-google-charts": "^4.0.0",
     "react-router-dom": "5.2.0",
     "react-scripts": "5.0.1",
-    "reactstrap": "8.10.0",
-    "sass": "1.69.5",
-    "libphonenumber-js": "^1.9.51",
     "react-toastify": "^8.2.0",
-    "react-google-charts": "^4.0.0"
-    
+    "reactstrap": "8.10.0",
+    "sass": "1.69.5"
   },
   "devDependencies": {
     "gulp": "4.0.2",
