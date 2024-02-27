@@ -1,5 +1,7 @@
 import config from "config";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'; // Import dotenv
+dotenv.config(); // Load environment variables
 
 
 
@@ -15,7 +17,8 @@ const verifyToken = (request, response, next) => {
     //verify token
 
     try {
-        const decoded = jwt.verify(token, config.get('jwtSecret'));
+        console.log(process.env.JWT_SECRET);
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
         request.id = decoded.id;
 

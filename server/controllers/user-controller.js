@@ -3,6 +3,8 @@ import * as userProjectServices from "../services/userProject-service.js"
 import User from "../models/User.js";
 import bcryptjs from "bcryptjs";
 import jwt from "jsonwebtoken";
+import dotenv from 'dotenv'; // Import dotenv
+dotenv.config(); // Load environment variables
 import config from "config";
 // import mongoose from "mongoose";
 // import expressValidator from "express-validaor";
@@ -52,7 +54,8 @@ export const post = async (request, response) => {
 
             //return JSON web token for session as user would be in a session after registering
             const user = await userService.post(payload);
-            const token = jwt.sign({ id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 });
+            //const token = jwt.sign({ id: user.id }, config.get("jwtSecret"), { expiresIn: 3600 });
+            const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: 3600 });
             response.status(200).send({
                 id: user._id,
                 firstname: user.firstname,
@@ -88,7 +91,7 @@ export const login = async (request, response) => {
         const user = await User.findOne({ email });
         if (user && bcryptjs.compareSync(password, user.password)) {
 
-            const token = jwt.sign({ id: user._id }, config.get("jwtSecret"), { expiresIn: 3600 });
+            const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: 3600 });
             response.status(200).send({
                 id: user._id,
                 firstName: user.firstname,
