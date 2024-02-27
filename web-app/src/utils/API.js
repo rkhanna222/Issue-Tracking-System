@@ -1,9 +1,13 @@
 //Created by Raghav Khanna
+import dotenv from 'dotenv'; // Import dotenv
+dotenv.config();
+
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const API = {
   //Login
   login: function (userInfo) {
-    return fetch("http://localhost:9000/api/users/login", {
+    return fetch("${apiUrl}/api/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +18,7 @@ const API = {
   },
   //create new user
   addUser: function (userData) {
-    return fetch("http://localhost:9000/api/users", {
+    return fetch("${apiUrl}/api/users", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +31,7 @@ const API = {
   //Update user details
 
   updateUser: function (userid, values) {
-    return fetch(`http://localhost:9000/api/users/${userid}`, {
+    return fetch(`${apiUrl}/api/users/${userid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -39,7 +43,7 @@ const API = {
 
   //Create new project
   createProject: function (projectdata) {
-    return fetch("http://localhost:9000/api/projects", {
+    return fetch("${apiUrl}/api/projects", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +54,7 @@ const API = {
   },
   // Gets all projects
   getProjects: function () {
-    return fetch("http://localhost:9000/api/projects", {
+    return fetch("${apiUrl}/api/projects", {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
       },
@@ -59,7 +63,7 @@ const API = {
 
   // Gets project by id
   getProjectById: function (projectId) {
-    return fetch(`http://localhost:9000/api/projects/${projectId}`, {
+    return fetch(`${apiUrl}/api/projects/${projectId}`, {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
       },
@@ -67,7 +71,7 @@ const API = {
   },
   // Gets all users projects
   getUsersProjects: function () {
-    return fetch("http://localhost:9000/api/usersProjects", {
+    return fetch("${apiUrl}/api/usersProjects", {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
       },
@@ -75,7 +79,7 @@ const API = {
   },
   // Gets all users
   getUsers: function () {
-    return fetch("http://localhost:9000/api/users/", {
+    return fetch("${apiUrl}/api/users/", {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
       },
@@ -84,7 +88,7 @@ const API = {
   //Add developer to team
   addProjectDevs: function (projectId, userId) {
     return fetch(
-      "http://localhost:9000/api/usersProjects/" + projectId + "/" + userId,
+      "${apiUrl}/api/usersProjects/" + projectId + "/" + userId,
       {
         method: "GET",
         headers: {
@@ -97,7 +101,7 @@ const API = {
   //Remove Developer from team
   removeDevMember: function (projectId, userId) {
     return fetch(
-      `http://localhost:9000/api/usersProjects/${projectId}/${userId}`,
+      `${apiUrl}/api/usersProjects/${projectId}/${userId}`,
       {
         method: "DELETE",
         headers: {
@@ -109,7 +113,7 @@ const API = {
   },
   //Remove Project
   removeProject: function (projectId) {
-    return fetch(`http://localhost:9000/api/projects/${projectId}`, {
+    return fetch(`${apiUrl}/api/projects/${projectId}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -121,7 +125,7 @@ const API = {
   getProjectUsers: function (projectId) {
     console.log("in getProject users check 0");
     console.log("access token", localStorage.getItem("accessToken"));
-    return fetch("http://localhost:9000/api/usersProjects/" + projectId, {
+    return fetch("${apiUrl}/api/usersProjects/" + projectId, {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
@@ -132,7 +136,7 @@ const API = {
   //Remove member from a project
   removeTeamMember: function (projectId, userId) {
     console.log("inside the remove team member in project ticket");
-    return fetch("http://localhost:9000/api/usersProjects/" + projectId, {
+    return fetch("${apiUrl}/api/usersProjects/" + projectId, {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
@@ -145,7 +149,7 @@ const API = {
   getAvailableUsers: function (projectId, abortController) {
     let signal = null;
     if (abortController) signal = abortController.signal;
-    return fetch("http://localhost:9000/api/users", {
+    return fetch("${apiUrl}/api/users", {
       signal,
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
@@ -155,7 +159,7 @@ const API = {
   },
   //To create a new ticket
   createNewTicket: function (projectId, data) {
-    return fetch("http://localhost:9000/api/tickets/" + projectId, {
+    return fetch("${apiUrl}/api/tickets/" + projectId, {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
@@ -166,7 +170,7 @@ const API = {
   },
   //Get Tickets by project
   getTicketsByProject: function (projectId) {
-    return fetch("http://localhost:9000/api/tickets/" + projectId, {
+    return fetch("${apiUrl}/api/tickets/" + projectId, {
       headers: {
         "x-auth-token": localStorage.getItem("accessToken"),
         "Content-Type": "application/json",
@@ -176,7 +180,7 @@ const API = {
   },
   //To get tickets
   getTicketsByUser: function () {
-    return fetch("http://localhost:9000/api/tickets/", {
+    return fetch("${apiUrl}/api/tickets/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -187,7 +191,7 @@ const API = {
   //Assigning developers to ticket
   assignDevsToTickets: function (id, devId) {
     return fetch(
-      "http://localhost:9000/api/tickets/assigndevs/" + id + "/" + devId + "/",
+      "${apiUrl}/api/tickets/assigndevs/" + id + "/" + devId + "/",
       {
         method: "POST",
         headers: {
@@ -200,7 +204,7 @@ const API = {
   },
   //Removing a ticket
   removeTicket: function (ticketId) {
-    return fetch("http://localhost:9000/api/tickets/" + ticketId, {
+    return fetch("${apiUrl}/api/tickets/" + ticketId, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -210,7 +214,7 @@ const API = {
   },
   //Getting the ticket Pie chart data
   getChartData: function () {
-    return fetch("http://localhost:9000/api/charts/", {
+    return fetch("${apiUrl}/api/charts/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -221,7 +225,7 @@ const API = {
 
   //Removing a user/developer
   removeMember: function (userid) {
-    return fetch(`http://localhost:9000/api/users/${userid}`, {
+    return fetch(`${apiUrl}/api/users/${userid}`, {
       method: "DELETE",
       mode: "cors",
       headers: {
@@ -233,7 +237,7 @@ const API = {
   },
   //Updateproject
   updateProject: function (projectid, values) {
-    return fetch(`http://localhost:9000/api/projects/${projectid}`, {
+    return fetch(`${apiUrl}/api/projects/${projectid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -247,7 +251,7 @@ const API = {
   getTicketById: function (ticketId, abortController) {
     let signal = null;
     if (abortController) signal = abortController.signal;
-    return fetch("http://localhost:9000/api/tickets/singleTicket/" + ticketId, {
+    return fetch("${apiUrl}/api/tickets/singleTicket/" + ticketId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -260,7 +264,7 @@ const API = {
   getTicketComments: function (ticketId, abortController) {
     let signal = null;
     if (abortController) signal = abortController.signal;
-    return fetch("http://localhost:9000/api/tickets/comments/" + ticketId, {
+    return fetch("${apiUrl}/api/tickets/comments/" + ticketId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -273,7 +277,7 @@ const API = {
   getDevAssignments: function (ticketId, abortController) {
     let signal = null;
     if (abortController) signal = abortController.signal;
-    return fetch("http://localhost:9000/api/tickets/assignes/" + ticketId, {
+    return fetch("${apiUrl}/api/tickets/assignes/" + ticketId, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -284,7 +288,7 @@ const API = {
   },
   //To add a comment
   createComment: function (ticketId, commentText) {
-    return fetch("http://localhost:9000/api/tickets/comments/" + ticketId, {
+    return fetch("${apiUrl}/api/tickets/comments/" + ticketId, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -296,7 +300,7 @@ const API = {
   //To remove a comment
   removeComment: function (ticketId, commentId) {
     return fetch(
-      "http://localhost:9000/api/tickets/comments/" +
+      "${apiUrl}/api/tickets/comments/" +
         ticketId +
         "/" +
         commentId,
@@ -311,7 +315,7 @@ const API = {
   },
   //Send Forgot password link
   sendLink: function (email) {
-    return fetch("http://localhost:9000/api/auth/requestResetPassword", {
+    return fetch("${apiUrl}/api/auth/requestResetPassword", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -322,7 +326,7 @@ const API = {
   },
   //To update password
   updatePassword: function (password, userid) {
-    return fetch(`http://localhost:9000/api/auth/resetPassword/${userid}`, {
+    return fetch(`${apiUrl}/api/auth/resetPassword/${userid}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -333,7 +337,7 @@ const API = {
   },
   //Get user by email
   getUserByEmail: function (email) {
-    return fetch(`http://localhost:9000/api/users/email/${email}`, {
+    return fetch(`${apiUrl}/api/users/email/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -343,7 +347,7 @@ const API = {
   },
   //To reset password
   resetPassword: function (userId, token, password) {
-    return fetch(`http://localhost:9000/api/auth/resetPassword/${userId}`, {
+    return fetch(`${apiUrl}/api/auth/resetPassword/${userId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -355,7 +359,7 @@ const API = {
   },
   //Update Ticket
   updateTicketData: function (ticketid, values) {
-    return fetch(`http://localhost:9000/api/tickets/${ticketid}`, {
+    return fetch(`${apiUrl}/api/tickets/${ticketid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
