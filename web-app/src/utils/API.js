@@ -1,8 +1,8 @@
 //Created by Raghav Khanna
-import dotenv from 'dotenv'; // Import dotenv
-dotenv.config();
+// import dotenv from 'dotenv'; // Import dotenv
+// dotenv.config();
 
-const apiUrl = process.env.REACT_APP_API_URL;
+const apiUrl = "https://issue-trackin-system.vercel.app/";
 
 const API = {
   //Login
