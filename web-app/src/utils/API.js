@@ -2,7 +2,7 @@
 // import dotenv from 'dotenv'; // Import dotenv
 // dotenv.config();
 
-const apiUrl = "https://issue-trackin-system.vercel.app";
+const apiUrl = "https://issue-trackin-system-t9ut.vercel.app";
 
 const API = {
   //Login
